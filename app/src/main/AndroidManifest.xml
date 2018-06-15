@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityTwo"/>
+        <activity android:name=".ActivityTwo" />
+        <activity android:name=".ActivityThree"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ActivityFour"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

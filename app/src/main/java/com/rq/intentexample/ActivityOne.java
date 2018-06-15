@@ -4,28 +4,32 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class ActivityOne extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = ActivityOne.class.getSimpleName();
+
     // REQUEST_CODE can be any value we like, used to determine the result type later
     private final int REQUEST_CODE = 20;
-
-    public Button button;
-    public Button emailButton;
-    public Button webButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate " + "TaskId: " + getTaskId() + " hasCode: " + hashCode());
+
         setContentView(R.layout.activity_one);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(this);
-        emailButton = findViewById(R.id.emailButton);
+
+        Button goToTwoButton = findViewById(R.id.goToTwoButton);
+        goToTwoButton.setOnClickListener(this);
+
+        Button emailButton = findViewById(R.id.emailButton);
         emailButton.setOnClickListener(this);
-        webButton = findViewById(R.id.webButton);
+
+        Button webButton = findViewById(R.id.webButton);
         webButton.setOnClickListener(this);
 
     }
@@ -59,7 +63,7 @@ public class ActivityOne extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
+            case R.id.goToTwoButton:
                 launchComposeView();
                 break;
             case R.id.emailButton:
